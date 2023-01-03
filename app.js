@@ -1,10 +1,19 @@
 const express = require("express")
-const app = expess()
-const config=require('config')
+const app = express()
+const config=  require('config')
+//const user=require('./routes/user.js')
+const book=require('./routes/book.js')
+
+
+
+
 
 app.use(express.json())
 
 
-app.use('/user',user)
+
+
+//sapp.use('/user',user)
 app.use('/book',book)
 
+app.listen(config.get("port"))
