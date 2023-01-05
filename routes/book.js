@@ -25,7 +25,7 @@ route.post('/add', async (req,res)=>{
 })
 
 
-route.post('/delete', async(req,res)=>{
+route.delete('/delete', async(req,res)=>{
     console.log(req.body);
     let sql = "DELETE FROM book WHERE Name = ?";
     let result,field
@@ -38,7 +38,7 @@ route.post('/delete', async(req,res)=>{
     res.status(200).send("affected row= "+ result.affectedRows);
 })
 
-route.post('/borrow', async (req,res)=>{
+route.put('/borrow', async (req,res)=>{
     let sql = "SELECT InStock FROM book WHERE Name = ?";
     let [result,field]=  await db.query(sql,[req.body.name])
     console.log(result); 
@@ -51,7 +51,7 @@ route.post('/borrow', async (req,res)=>{
     res.status(200).send(result.info);  
 })
 
-route.post('/return',async (req,res)=>{
+route.put('/return',async (req,res)=>{
     let sql = "SELECT InStock , FullStock FROM book WHERE Name = ?";
     let [result,field]=  await db.query(sql,[req.body.name])
     console.log(result); 
