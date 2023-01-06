@@ -5,15 +5,7 @@ const config=  require('config')
 const book=require('./routes/book.js')
 
 
-
-
-
 app.use(express.json())
-
-
-
-
 //sapp.use('/user',user)
 app.use('/book',book)
-
 app.listen(config.get("port"))
